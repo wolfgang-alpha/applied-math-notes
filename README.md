@@ -20,33 +20,18 @@ after cloning; `slides/lib` bundles reveal.js, MathJax and the fonts with their 
 
 ## Running the notebooks with Docker
 
-You need [Docker](https://docs.docker.com/get-docker/). The image runs on x86-64 and on ARM (Apple silicon). On
-Windows, run the commands in a WSL terminal.
+You need [Docker](https://docs.docker.com/get-docker/). The image
+[wolfla/fenics-notebook](https://hub.docker.com/r/wolfla/fenics-notebook) contains legacy FEniCS 2019, Gmsh 4.12 with
+OpenCASCADE, meshio and Jupyter, for x86-64 and ARM (Apple silicon); [docker/Dockerfile](docker/Dockerfile) shows how
+it is built. On Windows, run the commands in a WSL terminal.
 
-1. Build the image once. It is the FEniCS image of the
-   [scientificcomputing](https://github.com/scientificcomputing/packages) project plus Jupyter:
+```bash
+git clone https://github.com/wolfgang-alpha/applied-math-notes.git
+cd applied-math-notes
+docker run --rm -it -p 8888:8888 --user "$(id -u):$(id -g)" -v "$PWD":/home/fenics/shared wolfla/fenics-notebook:2026-10-06
+```
 
-   ```bash
-   docker build -t fenics-notebook:2024-05-30 - <<'EOF'
-   FROM ghcr.io/scientificcomputing/fenics-gmsh:2024-05-30
-   RUN python3 -m pip install --no-cache-dir notebook
-   EOF
-   ```
-
-2. Clone this repository and start Jupyter in it:
-
-   ```bash
-   git clone https://github.com/wolfgang-alpha/applied-math-notes.git
-   cd applied-math-notes
-   docker run --rm -it -p 8888:8888 \
-       --user "$(id -u):$(id -g)" -e HOME=/tmp \
-       -v "$PWD":/home/fenics/shared -w /home/fenics/shared \
-       fenics-notebook:2024-05-30 \
-       jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser
-   ```
-
-3. Open the URL printed at the end (`http://127.0.0.1:8888/tree?token=...`) in a browser and click a notebook.
-   Stop the server with Ctrl-C.
-
-The container runs as your own user, so the plots and sound files the notebooks write belong to you, not root. If port
-8888 is taken, use for example `-p 8899:8888` and replace 8888 by 8899 in the URL.
+The first start downloads the image (about 1.2 GB). Then open the URL printed at the end (`http://127.0.0.1:8888/tree?token=...`)
+in a browser and click a notebook; stop the server with Ctrl-C. `--user` makes the plots and sound files the notebooks
+write belong to you, not root. If port 8888 is taken, use for example `-p 8899:8888` and replace 8888 by 8899 in the
+URL.
