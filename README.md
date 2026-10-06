@@ -13,6 +13,16 @@ notebooks. Each lecture combines the theory with worked FEniCS examples and ends
 
 The notebooks are stored with their outputs, so they can be read on GitHub without running anything.
 
+## Slides
+
+[slides/lecture01.html](slides/lecture01.html) presents lecture 1 as [reveal.js](https://revealjs.com) slides. Clone or
+download the repository and open the file in a browser. Everything it needs is in `slides/lib`, so it also works
+offline. Arrow keys move through the slides, `S` opens the speaker view with notes and `F` switches to full screen. For
+a PDF, add `?print-pdf` to the address and print the page.
+
+`slides/lib` contains reveal.js (MIT license), MathJax (Apache License 2.0) and the fonts Source Sans 3 and JetBrains
+Mono (SIL Open Font License 1.1), each with its license file.
+
 ## Running the notebooks with Docker
 
 You need [Docker](https://docs.docker.com/get-docker/). The image runs on x86-64 and on ARM (Apple silicon). On
