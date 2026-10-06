@@ -15,15 +15,8 @@ The notebooks are stored with their outputs, so they can be read on GitHub witho
 
 ## Slides
 
-To look at the slides of lecture 1 right here on GitHub, open [slides/lecture01.pdf](slides/lecture01.pdf).
-
-For presenting, [slides/lecture01.html](slides/lecture01.html) is the same deck as [reveal.js](https://revealjs.com)
-slides, with step-by-step reveals and speaker notes. Clone or download the repository and open the file in a browser.
-Everything it needs is in `slides/lib`, so it also works offline. Arrow keys move through the slides, `S` opens the
-speaker view with notes and `F` switches to full screen.
-
-`slides/lib` contains reveal.js (MIT license), MathJax (Apache License 2.0) and the fonts Source Sans 3 and JetBrains
-Mono (SIL Open Font License 1.1), each with its license file.
+Lecture 1: [PDF](slides/lecture01.pdf) to read on GitHub, [HTML](slides/lecture01.html) to present (works offline
+after cloning; `slides/lib` bundles reveal.js, MathJax and the fonts with their licenses).
 
 ## Running the notebooks with Docker
 
