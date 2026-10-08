@@ -70,6 +70,7 @@ body { background: var(--bg); }
 .card p { margin: 0.3em 0; }
 .card.dir { border-left: 6px solid var(--dir); }
 .card.neu { border-left: 6px solid var(--neu); }
+.card.key { border-left: 6px solid var(--ink); }
 .tag { display: inline-flex; align-items: center; gap: 0.4em; font-weight: 600; white-space: nowrap; }
 .tag::before { content: ""; display: inline-block; width: 0.62em; height: 0.62em; border-radius: 50%; }
 .tag.dir::before { background: var(--dir); }
@@ -170,13 +171,13 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 <circle cx="932.0" cy="72.0" r="5" fill="#1d2433" stroke="#fcfcfb" stroke-width="2"/>
 <circle cx="1046.0" cy="62.0" r="5" fill="#1d2433" stroke="#fcfcfb" stroke-width="2"/>
 <circle cx="1160.0" cy="58.0" r="5" fill="#1d2433" stroke="#fcfcfb" stroke-width="2"/>
-<text x="486.0" y="30.0" font-size="20" fill="#52514e" font-style="italic">φ<tspan font-size="14" dy="4">i</tspan></text>
-<text x="1016.0" y="24.0" font-size="20" fill="#52514e" text-anchor="end" font-style="italic">u<tspan font-size="14" dy="4">h</tspan><tspan dy="-4" font-style="normal"> = Σ </tspan>U<tspan font-size="14" dy="4">i</tspan><tspan dy="-4"> φ</tspan><tspan font-size="14" dy="4">i</tspan></text>
+<text x="486.0" y="30.0" font-size="20" fill="#52514e" font-style="italic">h<tspan font-size="14" dy="4">i</tspan></text>
+<text x="1016.0" y="24.0" font-size="20" fill="#52514e" text-anchor="end" font-style="italic">u<tspan font-size="14" dy="4">h</tspan><tspan dy="-4" font-style="normal"> = Σ </tspan>U<tspan font-size="14" dy="4">i</tspan><tspan dy="-4"> h</tspan><tspan font-size="14" dy="4">i</tspan></text>
 </svg></div>
   <aside class="notes">
     Lecture 1: the Galerkin method. Starting point is the operator equation Au = f; we derive the integral form and
     the variational formulation and solve three 1D heat conduction problems with FEniCS.
-    The picture: a piecewise linear finite element function u_h = sum U_i phi_i, one hat function highlighted.
+    The picture: a piecewise linear finite element function u_h = sum U_i h_i, one basis (hat) function h_i highlighted.
   </aside>
 </section>
 
@@ -331,7 +332,45 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
     An operator is symmetric if (Au, v) = (Av, u) for all u, v in D(A).
     It is positive if (Au, u) = 0 for u = 0 and (Au, u) > 0 for u != 0, u in D(A).
     It is linear if A(u - v) = Au - Av.
-    These properties will be checked for the Laplace operator on the next slides.
+    These properties will be checked for the Laplace operator in the heat conduction example.
+  </aside>
+</section>
+
+<!-- ============================================================ Galerkin method -->
+<section>
+  <p class="kicker">Theory</p>
+  <h2>The Galerkin method</h2>
+  <div class="cols">
+    <div class="card">
+      <h3>Exact solution</h3>
+      <p class="small">The solution $u$ satisfies the variational formulation for <em>arbitrary</em> test functions:</p>
+      $$a(u, v) = L(v) \qquad \text{for all } v$$
+      <p class="note">infinitely many conditions</p>
+    </div>
+    <div class="card key fragment">
+      <h3>Idea: a finite approximation</h3>
+      <p class="small">Approximate $u$ with $N$ basis functions $h_i$, and test with the same functions:</p>
+      $$u_h = \sum\nolimits_{i=1}^{N} U_i\, h_i , \qquad v = h_j$$
+      <p class="note">$V_h = \operatorname{span}\{h_1, \dots, h_N\}$, finite-dimensional</p>
+    </div>
+  </div>
+  <div class="fragment" style="margin-top: 0.4em;">
+    <p class="small" style="margin-bottom: 0;">Require the variational formulation for all test functions of $V_h$
+      (testing with the $h_j$ is enough, since $a$ and $L$ are linear in $v$):</p>
+    $$a(u_h, h_j) = \sum\nolimits_{i=1}^{N} U_i \; a(h_i, h_j) = L(h_j), \qquad j = 1, \dots, N$$
+    <p class="small" style="margin-top: 0;">$N$ equations for the $N$ coefficients $U_i$: the linear system $K\, U = F$ with
+      $K_{ji} = a(h_i, h_j)$ and $F_j = L(h_j)$.</p>
+  </div>
+  <p class="fragment" style="margin-top: 0.5em;"><strong>This is the Galerkin method.</strong> In general $u_h \neq u$, but $u_h$
+    is at least a weak solution with respect to $V_h$: the variational formulation holds for every $v_h \in V_h$.</p>
+  <aside class="notes">
+    The variational formulation is true for the strong solution u for arbitrary test functions v.
+    Idea: in an approximation attempt we use finitely many basis functions h_i to approximate u = sum_i U_i h_i,
+    and the same functions as test functions, v = h_j. If we require the weak form to hold for all test functions of
+    the discrete function space V_h, we get N equations for the N unknowns U_i, and at least a weak solution with
+    respect to V_h. This is the Galerkin method.
+    In FEniCS, V = FunctionSpace(...) is V_h; TrialFunction and TestFunction stand for the basis functions h_i and h_j
+    (piecewise linear hat functions for 'Lagrange', 1), and solve(a == L, ...) assembles K and F and solves K U = F.
   </aside>
 </section>
 
