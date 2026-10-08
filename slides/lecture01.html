@@ -191,7 +191,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
     <div class="step fragment" data-fragment-index="1"><div class="label">Integral form</div><div>$(Au, v) = (f, v)$</div></div>
     <div class="via fragment" data-fragment-index="2">integrate by parts $s$ times, insert the boundary conditions</div>
     <div class="step fragment" data-fragment-index="2"><div class="label">Variational formulation</div><div>$a(u, v) = L(v)$</div></div>
-    <div class="via fragment" data-fragment-index="3">write $a$ and $L$ down in FEniCS and solve</div>
+    <div class="via fragment" data-fragment-index="3">Galerkin method: $u_h = \sum_i U_i\, h_i$, test with $v = h_j$, solve $K\, U = F$</div>
     <div class="step fragment" data-fragment-index="3"><div class="label">FEniCS</div><div><code>solve(a == L, u, bcs)</code></div></div>
   </div>
   <p class="muted small fragment" style="margin-top: 0.9em;">Along the way, the order of $A$ decides how often we integrate by parts, and which
@@ -931,7 +931,8 @@ plot(u)
       function space (<code>DirichletBC</code>); <span class="tag neu">$c > m$: Neumann</span>, built into the weak form (<code>... * ds</code>).</div></li>
     <li class="fragment"><div>Multiply by a test function $v$, integrate over $\Omega$, and integrate by parts $s$ times:
       $a(u, v) = L(v)$.</div></li>
-    <li class="fragment"><div>In FEniCS, write down <code>a</code> and <code>L</code> and call <code>solve(a == L, u, bcs)</code>.</div></li>
+    <li class="fragment"><div>Galerkin method: approximate $u_h = \sum_i U_i\, h_i$ and test with $v = h_j$. In FEniCS, write down
+      <code>a</code> and <code>L</code> and call <code>solve(a == L, u, bcs)</code>, which assembles and solves $K\, U = F$.</div></li>
   </ol>
   <aside class="notes">
     The four steps of the lecture. The exercises apply them to the 1D problem of example 2 (with an error norm) and to the
