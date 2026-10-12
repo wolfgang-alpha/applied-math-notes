@@ -6,6 +6,7 @@ notebooks. Each lecture combines the theory with worked FEniCS examples and ends
 | Notebook | Topic |
 |---|---|
 | [lecture01.ipynb](lecture01.ipynb) | The Galerkin method |
+| [lecture02.ipynb](lecture02.ipynb) | The finite element method: local basis functions, sparse matrices and the conjugate gradient method |
 | [lecture03.ipynb](lecture03.ipynb) | From the variational problem to the weak and the strong form |
 | [lecture04.ipynb](lecture04.ipynb) | Strain and stress, a closer look |
 | [lecture05.ipynb](lecture05.ipynb) | Time-dependent problems: the diffusion equation |
