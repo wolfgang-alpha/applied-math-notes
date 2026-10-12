@@ -35,3 +35,20 @@ The first start downloads the image (about 1.2 GB). Then open the URL printed at
 in a browser and click a notebook; stop the server with Ctrl-C. `--user` makes the plots and sound files the notebooks
 write belong to you, not root. If port 8888 is taken, use for example `-p 8899:8888` and replace 8888 by 8899 in the
 URL.
+
+## Running the notebooks on Debian or Ubuntu, without Docker
+
+On Debian 13 (trixie), Ubuntu 24.04 and newer, legacy FEniCS is in the standard repositories, so you need no Docker.
+This also works in the Ubuntu app for WSL on Windows.
+
+```bash
+sudo apt install python3-dolfin jupyter-notebook python3-matplotlib python3-scipy git
+git clone https://github.com/wolfgang-alpha/applied-math-notes.git
+cd applied-math-notes
+jupyter notebook
+```
+
+A browser opens with the notebook list (in WSL, open the printed URL yourself); click a notebook, and stop the server
+with Ctrl-C in the terminal. The repositories ship legacy FEniCS 2019.2, a later snapshot than the 2019.1 in the Docker
+image; all notebooks run unchanged with it. The package `fenics` installs the same plus the documentation and the C++
+headers, which the notebooks don't need.
