@@ -6,10 +6,10 @@ notebooks. Each lecture combines the theory with worked FEniCS examples and ends
 | Notebook | Topic |
 |---|---|
 | [lecture01.ipynb](lecture01.ipynb) | The Galerkin method |
-| [lecture02.ipynb](lecture02.ipynb) | From the variational problem to the weak and the strong form |
-| [lecture03.ipynb](lecture03.ipynb) | Strain and stress, a closer look |
-| [lecture04.ipynb](lecture04.ipynb) | Time-dependent problems: the diffusion equation |
-| [lecture05.ipynb](lecture05.ipynb) | Variational problems that are optimization problems: the hanging rope and shape optimization |
+| [lecture03.ipynb](lecture03.ipynb) | From the variational problem to the weak and the strong form |
+| [lecture04.ipynb](lecture04.ipynb) | Strain and stress, a closer look |
+| [lecture05.ipynb](lecture05.ipynb) | Time-dependent problems: the diffusion equation |
+| [lecture06.ipynb](lecture06.ipynb) | Variational problems that are optimization problems: the hanging rope and shape optimization |
 
 The notebooks are stored with their outputs, so they can be read on GitHub without running anything.
 
