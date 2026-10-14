@@ -16,8 +16,13 @@ The notebooks are stored with their outputs, so they can be read on GitHub witho
 
 ## Slides
 
-Lecture 1: [PDF](slides/lecture01.pdf) to read on GitHub, [HTML](slides/lecture01.html) to present (works offline
-after cloning; `slides/lib` bundles reveal.js, MathJax and the fonts with their licenses).
+| Lecture | Slides |
+|---|---|
+| 1. The Galerkin method | [PDF](slides/lecture01.pdf), [HTML](slides/lecture01.html) |
+| 2. The finite element method | [PDF](slides/lecture02.pdf), [HTML](slides/lecture02.html) |
+
+The PDFs can be read on GitHub; the HTML decks are for presenting (they work offline after cloning; `slides/lib`
+bundles reveal.js, MathJax and the fonts with their licenses).
 
 ## Running the notebooks with Docker
 
