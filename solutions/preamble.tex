@@ -1,0 +1,39 @@
+% Shared preamble of the solution sheets (included by lecture01.tex, lecture02.tex, ...)
+\documentclass[11pt, a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+
+% colours of the slides: Dirichlet blue, Neumann orange
+\definecolor{dir}{HTML}{2A78D6}
+\definecolor{neu}{HTML}{EB6834}
+\definecolor{ink}{HTML}{1D2433}
+\definecolor{ink2}{HTML}{52514E}
+\definecolor{hair}{HTML}{C3C2B7}
+\definecolor{codebg}{HTML}{F3F2EE}
+\definecolor{water}{HTML}{E3EEF5}
+
+\lstset{language=Python, basicstyle=\ttfamily\footnotesize, breaklines=true,
+  postbreak=\mbox{\textcolor{ink2}{$\hookrightarrow$}\space}, keywordstyle=\color{ink}\bfseries,
+  commentstyle=\color{ink2}\itshape, stringstyle=\color{ink2}, backgroundcolor=\color{codebg},
+  frame=none, xleftmargin=6pt, xrightmargin=6pt, aboveskip=8pt, belowskip=8pt, columns=fullflexible,
+  keepspaces=true, showstringspaces=false, upquote=true}
+
+\setlength{\parskip}{0.6em}
+\newcommand{\sheet}[2]{%
+  {\small\color{ink2}\textsc{Applied math notes}}\par\vspace{-0.4em}
+  {\LARGE\bfseries Lecture #1: #2}\par\vspace{0.1em}
+  {\large Solutions to the exercises}\par\vspace{0.6em}}
+\newcommand{\exercise}[1]{\section*{#1}}
+\newcommand{\task}[1]{\par\medskip\noindent\textbf{#1}\quad}

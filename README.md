@@ -24,6 +24,12 @@ The notebooks are stored with their outputs, so they can be read on GitHub witho
 The PDFs can be read on GitHub; the HTML decks are for presenting (they work offline after cloning; `slides/lib`
 bundles reveal.js, MathJax and the fonts with their licenses).
 
+## Solutions
+
+Solutions to the exercises on the slides: [lecture 1](solutions/lecture01.pdf), [lecture 2](solutions/lecture02.pdf).
+The LaTeX sources are in [solutions](solutions); `solutions/batch.sh` compiles them (needs `pdflatex` and `latexmk`).
+The FEniCS scripts there produce the numbers in the solutions.
+
 ## Running the notebooks with Docker
 
 You need [Docker](https://docs.docker.com/get-docker/). The image
