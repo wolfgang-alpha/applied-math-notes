@@ -1819,17 +1819,16 @@ solve(inner(grad(u), grad(v))*dx == Constant(1.0)*v*dx,
   <h2>Linear elasticity: a dam</h2>
   <div class="cols" style="grid-template-columns: 1.5fr 1fr; gap: 30px;">
     <div>
-      <p class="small" style="margin: 0;">Find $u$ with $u = u_D$ on $\Gamma_D$ such that, for all $v$ with $v = 0$ on $\Gamma_D$,</p>
+      <p class="small" style="margin: 0;">Find $u$ such that, for all $v$,</p>
       <div class="mid">
-      $$\int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx + \int_{\Gamma_N} T \cdot v \; ds ,$$
+      $$\int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx + \int_{\partial\Omega} T \cdot v \; ds ,$$
       $$\varepsilon(u) = \tfrac12 \left(\nabla u + \nabla u^T\right), \qquad \sigma(u) = \lambda\, (\operatorname{tr}\varepsilon)\, I + 2\mu\, \varepsilon .$$
       </div>
-      <p class="note" style="margin-top: 0;">$\Gamma_D$: displacement $u_D$ prescribed; $\Gamma_N$: traction $\sigma n = T$ prescribed; $f$: body force.</p>
+      <p class="note" style="margin-top: 0;">$T = \sigma n$: traction on the boundary; $f$: body force.</p>
       <p class="small">Hydrostatic pressure of the water at the depth $x$: $\; g(x) = \rho\, g\, x$.</p>
       <ol class="mid">
         <li>Which of $\Gamma_W$, $\Gamma_R$, $\Gamma_C$, $\Gamma_A$ are Dirichlet, which Neumann boundaries?</li>
-        <li>State the boundary condition on each part, with $g(x)$ on $\Gamma_W$, and modify the variational
-          formulation accordingly.</li>
+        <li>Modify the variational form accordingly.</li>
       </ol>
     </div>
     <div class="fig" style="margin-top: 10px;"><svg viewBox="0 0 520 470" role="img" aria-label="Cross section of a dam on a rock bed with the lake on the left; the upstream face, the base, the crest and the downstream face are named; the water pressure grows linearly with the depth x">
