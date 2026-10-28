@@ -20,6 +20,7 @@ The notebooks are stored with their outputs, so they can be read on GitHub witho
 |---|---|
 | 1. The Galerkin method | [PDF](slides/lecture01.pdf), [HTML](slides/lecture01.html) |
 | 2. The finite element method | [PDF](slides/lecture02.pdf), [HTML](slides/lecture02.html) |
+| 3. Minimum potential energy | [PDF](slides/lecture03.pdf), [HTML](slides/lecture03.html) |
 
 The PDFs can be read on GitHub; the HTML decks are for presenting (they work offline after cloning; `slides/lib`
 bundles reveal.js, MathJax and the fonts with their licenses).
