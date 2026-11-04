@@ -142,7 +142,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 
 <!-- ============================================================ Title -->
 <section class="title-slide">
-  <p class="kicker" style="margin-top: 90px !important;">Applied math notes · Lecture 1</p>
+  <p class="kicker" style="margin-top: 90px !important;">Applied math notes · Chapter 1</p>
   <h1>The Galerkin method</h1>
   <p class="subtitle">From the operator equation to a finite element solution in FEniCS</p>
   <div class="fig"><svg viewBox="0 0 1180 150" role="img" aria-label="Piecewise linear finite element function as a sum of hat functions">
@@ -175,7 +175,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 <text x="1016.0" y="24.0" font-size="20" fill="#52514e" text-anchor="end" font-style="italic">u<tspan font-size="14" dy="4">h</tspan><tspan dy="-4" font-style="normal"> = Σ </tspan>U<tspan font-size="14" dy="4">i</tspan><tspan dy="-4"> h</tspan><tspan font-size="14" dy="4">i</tspan></text>
 </svg></div>
   <aside class="notes">
-    Lecture 1: the Galerkin method. Starting point is the operator equation Au = f; we derive the integral form and
+    Chapter 1: the Galerkin method. Starting point is the operator equation Au = f; we derive the integral form and
     the variational formulation and solve three 1D heat conduction problems with FEniCS.
     The picture: a piecewise linear finite element function u_h = sum U_i h_i, one basis (hat) function h_i highlighted.
   </aside>
@@ -197,7 +197,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <p class="muted small fragment" style="margin-top: 0.9em;">Along the way, the order of $A$ decides how often we integrate by parts, and which
     boundary conditions are <span class="tag dir">essential</span> and which are <span class="tag neu">natural</span>.</p>
   <aside class="notes">
-    The whole lecture in one line. Each arrow is one of the following slides.
+    The whole chapter in one line. Each arrow is one of the following slides.
   </aside>
 </section>
 
@@ -935,7 +935,7 @@ plot(u)
       <code>a</code> and <code>L</code> and call <code>solve(a == L, u, bcs)</code>, which assembles and solves $K\, U = F$.</div></li>
   </ol>
   <aside class="notes">
-    The four steps of the lecture. The exercises apply them to the 1D problem of example 2 (with an error norm) and to the
+    The four steps of the chapter. The exercises apply them to the 1D problem of example 2 (with an error norm) and to the
     fourth-order biharmonic equation of beam bending.
   </aside>
 </section>

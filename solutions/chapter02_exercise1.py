@@ -1,4 +1,4 @@
-# Lecture 2, exercise 1.2: CG iterations for the heated plate with different preconditioners (example 5)
+# Chapter 2, exercise 1.2: CG iterations for the heated plate with different preconditioners (example 5)
 from fenics import *
 
 set_log_level(LogLevel.WARNING)

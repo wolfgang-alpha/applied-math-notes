@@ -1,33 +1,34 @@
 # Applied math notes
 
 Lecture notes on the finite element method with legacy [FEniCS](https://fenicsproject.org) (2019.1), as Jupyter
-notebooks. Each lecture combines the theory with worked FEniCS examples and ends with exercises.
+notebooks. Each chapter combines the theory with worked FEniCS examples and ends with exercises.
 
 | Notebook | Topic |
 |---|---|
-| [lecture01.ipynb](lecture01.ipynb) | The Galerkin method |
-| [lecture02.ipynb](lecture02.ipynb) | The finite element method: local basis functions, sparse matrices and the conjugate gradient method |
-| [lecture03.ipynb](lecture03.ipynb) | From the variational problem to the weak and the strong form |
-| [lecture04.ipynb](lecture04.ipynb) | Strain and stress, a closer look |
-| [lecture05.ipynb](lecture05.ipynb) | Time-dependent problems: the diffusion equation |
-| [lecture06.ipynb](lecture06.ipynb) | Variational problems that are optimization problems: the hanging rope and shape optimization |
+| [chapter01.ipynb](chapter01.ipynb) | The Galerkin method |
+| [chapter02.ipynb](chapter02.ipynb) | The finite element method: local basis functions, sparse matrices and the conjugate gradient method |
+| [chapter03.ipynb](chapter03.ipynb) | From the variational problem to the weak and the strong form |
+| [chapter04.ipynb](chapter04.ipynb) | Strain and stress, a closer look |
+| [chapter05.ipynb](chapter05.ipynb) | Time-dependent problems: the diffusion equation |
+| [chapter06.ipynb](chapter06.ipynb) | Variational problems that are optimization problems: the hanging rope and shape optimization |
 
 The notebooks are stored with their outputs, so they can be read on GitHub without running anything.
 
 ## Slides
 
-| Lecture | Slides |
+| Chapter | Slides |
 |---|---|
-| 1. The Galerkin method | [PDF](slides/lecture01.pdf), [HTML](slides/lecture01.html) |
-| 2. The finite element method | [PDF](slides/lecture02.pdf), [HTML](slides/lecture02.html) |
-| 3. Minimum potential energy | [PDF](slides/lecture03.pdf), [HTML](slides/lecture03.html) |
+| 1. The Galerkin method | [PDF](slides/chapter01.pdf), [HTML](slides/chapter01.html) |
+| 2. The finite element method | [PDF](slides/chapter02.pdf), [HTML](slides/chapter02.html) |
+| 3. Minimum potential energy | [PDF](slides/chapter03.pdf), [HTML](slides/chapter03.html) |
 
 The PDFs can be read on GitHub; the HTML decks are for presenting (they work offline after cloning; `slides/lib`
 bundles reveal.js, MathJax and the fonts with their licenses).
 
 ## Solutions
 
-Solutions to the exercises on the slides: [lecture 1](solutions/lecture01.pdf), [lecture 2](solutions/lecture02.pdf).
+Solutions to the exercises on the slides: [chapter 1](solutions/chapter01.pdf), [chapter 2](solutions/chapter02.pdf),
+[chapter 3](solutions/chapter03.pdf) (exercise 2).
 The LaTeX sources are in [solutions](solutions); `solutions/batch.sh` compiles them (needs `pdflatex` and `latexmk`).
 The FEniCS scripts there produce the numbers in the solutions.
 

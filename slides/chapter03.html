@@ -198,7 +198,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 
 <!-- ============================================================ Title -->
 <section class="title-slide">
-  <p class="kicker" style="margin-top: 30px !important;">Applied math notes · Lecture 3</p>
+  <p class="kicker" style="margin-top: 30px !important;">Applied math notes · Chapter 3</p>
   <h1>Minimum potential energy</h1>
   <p class="subtitle">Variational principles, the weak and the strong form, and linear elasticity in FEniCS</p>
   <div class="fig" style="margin-top: 50px;"><svg viewBox="0 0 1180 290" role="img" aria-label="Beam with four circular holes, clamped on the left and deformed under its own weight; the triangles of the mesh are shaded by the strain energy density, darkest at the clamped end and above and below the holes">
@@ -267,7 +267,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 <line x1="66" y1="250" x2="52" y2="264" stroke="#52514e" stroke-width="1.5"/>
 </svg></div>
   <aside class="notes">
-    Lecture 3: the principle of minimum potential energy. One functional, the total potential energy, contains the weak
+    Chapter 3: the principle of minimum potential energy. One functional, the total potential energy, contains the weak
     form, the strong form and the natural boundary conditions. Applied to linear elasticity in FEniCS.
     The picture: a beam with four holes, clamped on the left, deformed under its own weight (true scale, dashed: before).
     The triangles of the mesh are shaded by the strain energy density, darkest at the clamped end and next to the holes.
@@ -282,10 +282,10 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <table class="matrix">
     <tr><th colspan="2">Physics regime</th><th>Variational principle</th><th>Strong form / physical law</th></tr>
     <tr><td class="regime" rowspan="2">Mechanics</td><td class="sub">Dynamics</td>
-      <td><span class="name">Stationary action</span>$\int \big(T - V\big)\; dt\;$ stationary</td>
-      <td><span class="name">Newton's law</span>$m\, \ddot x = -\nabla V$</td></tr>
+      <td><span class="name">Stationary action</span>$\int \big(K - \Pi\big)\; dt\;$ stationary</td>
+      <td><span class="name">Newton's law</span>$m\, \frac{d^2 x}{dt^2} = \sum F$</td></tr>
     <tr class="this"><td class="sub">Statics</td>
-      <td><span class="name">Minimum potential energy<span class="here">this lecture</span></span>$\Pi = \Psi - W\;$ minimal</td>
+      <td><span class="name">Minimum potential energy<span class="here">this chapter</span></span>$\Pi = \Psi - W\;$ minimal</td>
       <td><span class="name">Balance of forces</span>$\sum F = 0$</td></tr>
     <tr><td class="regime" colspan="2">Optics</td>
       <td><span class="name">Fermat's principle</span>travel time $\int \frac{n}{c}\; ds\;$ stationary</td>
@@ -298,12 +298,14 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
       <td><span class="name">Schrödinger equation</span>$H \psi = E\, \psi$</td></tr>
   </table>
   <aside class="notes">
-    Dynamics: the motion makes the action, the time integral of kinetic minus potential energy, stationary (Hamilton's
-    principle); its Euler-Lagrange equation is Newton's law. Statics: the equilibrium state minimizes the total potential
-    energy; the condition is that all forces balance. Optics: light takes the path of stationary travel time; at an
+    Dynamics: the motion makes the action, the time integral of the kinetic energy K minus the potential energy Pi,
+    stationary (Hamilton's principle); its Euler-Lagrange equation is Newton's law, mass times acceleration equals the
+    sum of the forces. Statics: the equilibrium state minimizes the same total potential energy Pi; the condition is that
+    all forces balance. Statics is dynamics without motion: K = 0 and no acceleration, so the action principle becomes
+    the minimum of Pi and Newton's law becomes sum F = 0. Optics: light takes the path of stationary travel time; at an
     interface this gives Snell's law of refraction. Electrostatics: the potential minimizes the field energy minus the
     work of the charges; the condition is Gauss's law, a Poisson equation, the same functional as heat conduction in
-    lecture 1. Quantum mechanics: the ground state minimizes the Rayleigh quotient; its stationary points are the
+    chapter 1. Quantum mechanics: the ground state minimizes the Rayleigh quotient; its stationary points are the
     eigenfunctions of H, the time-independent Schroedinger equation. Further examples: soap films (minimal area, zero
     mean curvature), the hanging chain. Today: statics, the second row.
   </aside>
@@ -415,7 +417,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <aside class="notes">
     The principle: among all admissible states, those that satisfy the essential boundary conditions, the equilibrium
     minimizes Psi - W. For a symmetric, positive and linear operator the functional is quadratic: half the bilinear form
-    of lecture 1 minus the linear form; after the s integrations by parts a contains derivatives of order s only.
+    of chapter 1 minus the linear form; after the s integrations by parts a contains derivatives of order s only.
     Proof: let u solve Au = f, so L(v) = a(u, v) for all v. With the symmetry of a, complete the square:
     1/2 a(v, v) - a(u, v) = 1/2 a(v - u, v - u) - 1/2 a(u, u). The first term is positive unless v = u.
     As for the spring, the minimum value is -Psi.
@@ -459,7 +461,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
     minimizer the slope is zero in every admissible direction v (v = 0 on the Dirichlet boundary): black curve. At any
     other function w there is a direction with nonzero slope: grey. For quadratic Pi,
     Pi(u + eps v) = Pi(u) + eps delta Pi(u; v) + 1/2 eps^2 a(v, v), and delta Pi = a(u, v) - L(v) = 0 for all v is the
-    variational formulation of lecture 1.
+    variational formulation of chapter 1.
     The Euler-Lagrange equation is the condition on the energy density (calligraphic L, not the linear form L(v)).
     Heat conduction: dL/du = -f and dL/d grad u = grad u. In 1D with second derivatives the equation gets the
     additional term + (d^2/dx^2) dL/du''; that is the beam on the next slides.
@@ -517,7 +519,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <aside class="notes">
     The functional is the starting point; both forms follow from it. Left: the directional derivative, delta Pi(u; v) = 0
     for all v (v = 0 on the Dirichlet boundary), gives the variational formulation; for quadratic Pi this is
-    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE. Between them: integration by parts, as in lecture 1,
+    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE. Between them: integration by parts, as in chapter 1,
     now read from left to right.
     The orange terms: the work of the boundary load t is part of the functional. It goes into the weak form as the
     boundary integral of L(v). Integrating by parts leaves the boundary integral of (dL/d grad u . n - t) v, and since v
@@ -582,7 +584,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
       <span class="neu-term">$\displaystyle -\, P\, v(L) - M\, v'(L)$</span> $= 0$</div>
   </div>
   <aside class="notes">
-    The beam of exercise 2 of lecture 1, now with general loads: bending stiffness EI, deflection u(x). The strain energy of
+    The beam of exercise 2 of chapter 1, now with general loads: bending stiffness EI, deflection u(x). The strain energy of
     bending is 1/2 EI times the curvature squared; Psi is the first term, the rest is -W: the work of the distributed load
     q, and at the free end the force P times the deflection and the moment M times the rotation u' (positive in the
     direction of u and u'). The clamped end is essential: u and u' are prescribed, and the directions v have
@@ -608,7 +610,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
       </table>
     </div>
     <div class="card key fragment">
-      <h3>Lecture 1, exercise 2</h3>
+      <h3>Chapter 1, exercise 2</h3>
       <p class="small" style="margin: 0;">The load vector there is $F_j = L(h_j)$ with $L(v) = P\, v(1) + M\, v'(1)$:</p>
       $$(F_3, F_4) = (P, M) = (1, 0)$$
       <p class="note" style="margin: 0;">The boundary terms we dropped there are in $\Pi$.</p>
@@ -618,9 +620,9 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
     Two integrations by parts move the derivatives from v back to u; the terms at x = 0 vanish since v(0) = v'(0) = 0.
     Since v is arbitrary in the interior, the integrand vanishes: the strong form EI u'''' = q. Since v(L) and v'(L) are
     arbitrary as well, both boundary brackets vanish: the natural boundary conditions, bending moment EI u'' = M and shear
-    force -EI u''' = P at the free end. They come out of the functional. The classification of lecture 1 agrees:
+    force -EI u''' = P at the free end. They come out of the functional. The classification of chapter 1 agrees:
     O(A) = 4, s = 2, m = 1, so u and u' (c &lt;= 1) are essential, u'' and u''' natural.
-    In exercise 2 of lecture 1 the load vector (1, 0) was prescribed by hand. With the Hermite functions h_3(1) = 1,
+    In exercise 2 of chapter 1 the load vector (1, 0) was prescribed by hand. With the Hermite functions h_3(1) = 1,
     h_3'(1) = 0, h_4(1) = 0, h_4'(1) = 1, we get F_3 = P and F_4 = M: a point force 1 and no moment. The conditions
     u''(1) = 0 and u'''(1) = -1 of the exact solution are the natural conditions of this functional.
   </aside>
@@ -633,7 +635,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <p class="small" style="margin: 0 0 0.4em;">Insert $u_h = \sum_i U_i\, h_i$:</p>
   <div class="cols">
     <div class="card">
-      <h3>Galerkin (lecture 1): test with $v = h_j$</h3>
+      <h3>Galerkin (chapter 1): test with $v = h_j$</h3>
       $$a(u_h, h_j) = L(h_j)$$
     </div>
     <div class="card key fragment" data-fragment-index="1">
@@ -646,7 +648,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <div class="cols fragment">
     <ul class="small" style="margin-top: 0;">
       <li>$u_h$ is the <strong>best approximation</strong> in the energy norm.</li>
-      <li>$\Pi(U)$ is the function that CG minimizes (lecture 2).</li>
+      <li>$\Pi(U)$ is the function that CG minimizes (chapter 2).</li>
     </ul>
     <pre><code class="language-python" data-trim data-noescape>
 Pi  = (0.5*inner(grad(u), grad(u)) - f*u)*dx
@@ -708,7 +710,7 @@ solve(dPi == 0, u, bc)
     each with one constant: the bulk modulus kappa and the shear modulus G. A : B is the sum of A_ij B_ij.
     The stress is the derivative of the energy density with respect to the strain, just as the spring force k u is the
     derivative of 1/2 k u^2; sigma n is the force per unit area on a surface with normal n. With the Lame constants
-    lambda = kappa - 2/3 G and mu = G it is Hooke's law sigma = lambda (tr eps) I + 2 mu eps (exercise 3).
+    lambda = kappa - 2/3 G and mu = G it is Hooke's law sigma = lambda (tr eps) I + 2 mu eps (exercise 4).
   </aside>
 </section>
 
@@ -749,14 +751,14 @@ solve(dPi == 0, u, bc)
     </div>
   </div>
   <div class="card fragment" style="margin-top: 0.6em;">
-    <p class="small" style="margin: 0;">Bulk and shear modulus (exercise 3):</p>
+    <p class="small" style="margin: 0;">Bulk and shear modulus (exercise 4):</p>
     $$\kappa = \frac{E}{3\, (1 - 2\nu)}, \qquad G = \frac{E}{2\, (1 + \nu)}$$
     <p class="note" style="margin: 0;">The examples use $E = 1000$ and $\nu = 0.3$.</p>
   </div>
   <aside class="notes">
     E and nu are what one measures: in the tension test the stress F/S over the strain Delta L / L, and the lateral
     contraction relative to the elongation (Delta d &lt; 0 is the change of the width). kappa and G are what enters the
-    energy. The conversion in both directions is exercise 3; the inverse is E = 9 kappa G / (3 kappa + G),
+    energy. The conversion in both directions is exercise 4; the inverse is E = 9 kappa G / (3 kappa + G),
     nu = (3 kappa - 2 G) / (2 (3 kappa + G)). For nu close to 1/2 the bulk modulus becomes infinite: the material is
     incompressible.
   </aside>
@@ -801,7 +803,7 @@ solve(dPi == 0, u, bc)
 </svg></div>
   </div>
   <div class="fragment" style="margin-top: 0.6em;">
-    <p class="small" style="margin: 0;">Directional derivative: the variational formulation of the dam (lecture 2)</p>
+    <p class="small" style="margin: 0;">Directional derivative: the variational formulation of the dam (exercise 2)</p>
     <div class="eqrow">$\displaystyle \int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx$
       <span class="neu-term">$\displaystyle + \int_\Gamma T \cdot v \; ds$</span></div>
   </div>
@@ -812,7 +814,7 @@ solve(dPi == 0, u, bc)
   <aside class="notes">
     The strain energy minus the work of the body force (own weight f = (0, -rho g)) and of the traction T on the Neumann
     boundary Gamma = boundary minus Gamma_D; T = 0 where the boundary is free. With delta psi = sigma : eps(v), the
-    directional derivative is the variational formulation of linear elasticity used for the dam in exercise 2 of lecture 2,
+    directional derivative is the variational formulation of linear elasticity used for the dam of exercise 2,
     for all v with v = 0 on Gamma_D. Integrating by parts (divergence theorem, sigma symmetric):
     -int (div sigma + f) . v dx + int_Gamma (sigma n - T) . v ds = 0. The boundary term of the divergence theorem pairs
     with the traction term of the functional: sigma n = T is the natural boundary condition. The free surfaces, here the
@@ -1264,24 +1266,25 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
     <li class="fragment"><div>Minimize over $V_h$: $K\, U = F$, the Galerkin method (<code>solve(dPi == 0, u, bcs)</code>).</div></li>
   </ol>
   <aside class="notes">
-    The four steps of the lecture. Step 1: the admissible u satisfy the essential boundary conditions. Step 4: u_h is the
-    best approximation in the energy norm. The exercises: the functional of heat conduction with its boundary term, the
-    simply supported beam, and the material constants.
+    The four steps of the chapter. Step 1: the admissible u satisfy the essential boundary conditions. Step 4: u_h is the
+    best approximation in the energy norm. The exercises: the free energy of heat conduction with its boundary term, the
+    boundary conditions of a dam, the simply supported beam, and the material constants.
   </aside>
 </section>
 
 <!-- ============================================================ Exercise 1 -->
 <section>
   <p class="kicker">Exercise 1</p>
-  <h2>The functional of the heat conduction problem</h2>
-  <p class="small">Problem of lecture 1: $-\nabla \cdot \nabla u = f$ in $\Omega$, $u$ prescribed on $\partial\Omega \setminus \Gamma$,
-    outward heat flux $q \cdot n = g$ with $q = -\nabla u$ on $\Gamma$. Consider</p>
-  $$\Pi(u) = \int_\Omega \tfrac12\, |\nabla u|^2 \; dx - \int_\Omega f\, u \; dx + \int_\Gamma g\, u \; ds .$$
+  <h2>The free energy of stationary heat conduction</h2>
+  <p class="small">Problem of chapter 1: $-\nabla \cdot \nabla u = f$ in $\Omega$, $u$ prescribed on $\partial\Omega \setminus \Gamma$,
+    outward heat flux $q \cdot n = g$ with $q = -\nabla u$ on $\Gamma$. Consider the free energy</p>
+  $$F(u) = \int_\Omega \tfrac12\, |\nabla u|^2 \; dx - \int_\Omega f\, u \; dx + \int_\Gamma g\, u \; ds .$$
   <ol class="mid">
-    <li>Compute $\delta\Pi(u; v)$ and compare with the variational formulation of lecture 1.</li>
-    <li>Integrate by parts and derive the strong form and the natural boundary condition on $\Gamma$. Why does the boundary
-      term of the functional carry a plus sign?</li>
-    <li>Solve problem 3 of lecture 1 ($u(0) = 0$, $f = 0$, $g = -1$ at $x = 1$, 20 elements) as a minimization problem with
+    <li>Compute $\delta F(u; v)$ and compare with the variational formulation of chapter 1.</li>
+    <li>Apply the Euler–Lagrange equation to $F$.</li>
+    <li>Multiply the result of 2 by a test function $v$ and integrate by parts. Compare with 1: which boundary condition holds
+      on $\Gamma$, and why does the boundary term of $F$ carry a plus sign?</li>
+    <li>Solve problem 3 of chapter 1 ($u(0) = 0$, $f = 0$, $g = -1$ at $x = 1$, 20 elements) as a minimization problem with
       <code>derivative</code> and compare with the solution from <code>a == L</code>.</li>
   </ol>
 </section>
@@ -1289,6 +1292,67 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
 <!-- ============================================================ Exercise 2 -->
 <section>
   <p class="kicker">Exercise 2</p>
+  <h2>Linear elasticity: a dam</h2>
+  <div class="cols" style="grid-template-columns: 1.5fr 1fr; gap: 30px;">
+    <div>
+      <p class="small" style="margin: 0;">Find $u$ such that, for all $v$,</p>
+      <div class="mid">
+      $$\int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx + \int_{\partial\Omega} T \cdot v \; ds ,$$
+      $$\varepsilon(u) = \tfrac12 \left(\nabla u + \nabla u^T\right), \qquad \sigma(u) = \lambda\, (\operatorname{tr}\varepsilon)\, I + 2\mu\, \varepsilon .$$
+      </div>
+      <p class="note" style="margin-top: 0;">$T = \sigma n$: traction on the boundary; $f$: body force.</p>
+      <p class="small">Hydrostatic pressure of the water at the depth $x$: $\; g(x) = \rho\, g\, x$.</p>
+      <ol class="mid">
+        <li>Which of $\Gamma_W$, $\Gamma_R$, $\Gamma_C$, $\Gamma_A$ are Dirichlet, which Neumann boundaries?</li>
+        <li>Modify the variational form accordingly.</li>
+      </ol>
+    </div>
+    <div class="fig" style="margin-top: 10px;"><svg viewBox="0 0 520 470" role="img" aria-label="Cross section of a dam on a rock bed with the lake on the left; the upstream face, the base, the crest and the downstream face are named; the water pressure grows linearly with the depth x">
+<defs><pattern id="rock-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="12" stroke="#c3c2b7" stroke-width="2"/></pattern></defs>
+<rect x="10.0" y="390.0" width="500.0" height="40.0" fill="url(#rock-hatch)"/>
+<line x1="10.0" y1="390.0" x2="510.0" y2="390.0" stroke="#898781" stroke-width="1.5"/>
+<text x="510.0" y="458.0" font-size="18" fill="#52514e" text-anchor="end">rock bed</text>
+<rect x="10.0" y="110.0" width="220.0" height="280.0" fill="#e3eef5"/>
+<line x1="10.0" y1="110.0" x2="230.0" y2="110.0" stroke="#5b8fb3" stroke-width="2"/>
+<polygon points="82.0,94.0 98.0,94.0 90.0,106.0" fill="none" stroke="#5b8fb3" stroke-width="1.6" stroke-linejoin="round"/>
+<line x1="84.0" y1="117.0" x2="96.0" y2="117.0" stroke="#5b8fb3" stroke-width="1.4"/>
+<line x1="87.0" y1="122.0" x2="93.0" y2="122.0" stroke="#5b8fb3" stroke-width="1.4"/>
+<text x="70.0" y="205.0" font-size="19" fill="#52514e" text-anchor="middle">lake</text>
+<line x1="32.0" y1="110.0" x2="32.0" y2="369.0" stroke="#52514e" stroke-width="1.5"/>
+<polygon points="32.0,378.0 27.5,369.0 36.5,369.0" fill="#52514e" stroke="none"/>
+<text x="44.0" y="372.0" font-size="21" fill="#52514e"><tspan font-style="italic">x</tspan></text>
+<polygon points="230.0,110.0 230.0,390.0 110.0,390.0" fill="rgba(82,81,78,0.06)" stroke="none"/>
+<line x1="230.0" y1="110.0" x2="110.0" y2="390.0" stroke="#52514e" stroke-width="1.2"/>
+<line x1="206.0" y1="166.0" x2="219.0" y2="166.0" stroke="#52514e" stroke-width="1.5"/>
+<polygon points="228.0,166.0 219.0,170.5 219.0,161.5" fill="#52514e" stroke="none"/>
+<line x1="182.0" y1="222.0" x2="219.0" y2="222.0" stroke="#52514e" stroke-width="1.5"/>
+<polygon points="228.0,222.0 219.0,226.5 219.0,217.5" fill="#52514e" stroke="none"/>
+<line x1="158.0" y1="278.0" x2="219.0" y2="278.0" stroke="#52514e" stroke-width="1.5"/>
+<polygon points="228.0,278.0 219.0,282.5 219.0,273.5" fill="#52514e" stroke="none"/>
+<line x1="134.0" y1="334.0" x2="219.0" y2="334.0" stroke="#52514e" stroke-width="1.5"/>
+<polygon points="228.0,334.0 219.0,338.5 219.0,329.5" fill="#52514e" stroke="none"/>
+<text x="162.0" y="258.0" font-size="20" fill="#52514e" text-anchor="end"><tspan font-style="italic">g</tspan>(<tspan font-style="italic">x</tspan>)</text>
+<polygon points="230.0,390.0 230.0,110.0 275.0,110.0 450.0,390.0" fill="#ffffff" stroke="#1d2433" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="318.0" y="312.0" font-size="26" fill="#1d2433" text-anchor="middle">Ω</text>
+<text x="318.0" y="336.0" font-size="16" fill="#52514e" text-anchor="middle">dam</text>
+<text x="240.0" y="252.0" font-size="21" fill="#1d2433">Γ<tspan font-size="15" dy="4.5" font-style="italic">W</tspan><tspan dy="-4.5"></tspan></text>
+<text x="252.5" y="98.0" font-size="21" fill="#1d2433" text-anchor="middle">Γ<tspan font-size="15" dy="4.5" font-style="italic">C</tspan><tspan dy="-4.5"></tspan></text>
+<text x="380.0" y="236.0" font-size="21" fill="#1d2433">Γ<tspan font-size="15" dy="4.5" font-style="italic">A</tspan><tspan dy="-4.5"></tspan></text>
+<text x="330.0" y="378.0" font-size="21" fill="#1d2433" text-anchor="middle">Γ<tspan font-size="15" dy="4.5" font-style="italic">R</tspan><tspan dy="-4.5"></tspan></text>
+</svg></div>
+  </div>
+  <aside class="notes">
+    Solution. Gamma_R: Dirichlet, the dam is fixed to the rock, u = 0, so v = 0 there. Gamma_W: Neumann, the water
+    pushes against the face, sigma n = -g(x) n (the pressure acts against the outward normal). Gamma_C and Gamma_A:
+    homogeneous Neumann, sigma n = 0, no boundary term. Find u with u = 0 on Gamma_R such that
+    int sigma(u) : epsilon(v) dx = int f . v dx - int_Gamma_W g(x) n . v ds for all v with v = 0 on Gamma_R;
+    f is the own weight of the dam.
+  </aside>
+</section>
+
+<!-- ============================================================ Exercise 3 -->
+<section>
+  <p class="kicker">Exercise 3</p>
   <h2>A simply supported beam</h2>
   <p>A beam of length $L$ and stiffness $EI$ under the uniform load $q$, supported at both ends: $u(0) = u(L) = 0$, the ends can
     rotate.</p>
@@ -1300,9 +1364,9 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
   </ol>
 </section>
 
-<!-- ============================================================ Exercise 3 -->
+<!-- ============================================================ Exercise 4 -->
 <section>
-  <p class="kicker">Exercise 3</p>
+  <p class="kicker">Exercise 4</p>
   <h2>Material constants (theory)</h2>
   <ol class="mid">
     <li>Show that $\psi$ equals $\tfrac12\, \lambda\, (\operatorname{tr}\varepsilon)^2 + \mu\, \varepsilon : \varepsilon$ with

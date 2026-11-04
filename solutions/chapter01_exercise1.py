@@ -1,4 +1,4 @@
-# Lecture 1, exercise 1: -u'' = 1 on (0, 1), u(0) = 0, u'(1) = 0, exact solution u = x - x^2/2
+# Chapter 1, exercise 1: -u'' = 1 on (0, 1), u(0) = 0, u'(1) = 0, exact solution u = x - x^2/2
 from fenics import *
 
 set_log_level(LogLevel.WARNING)

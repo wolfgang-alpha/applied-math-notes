@@ -162,7 +162,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 
 <!-- ============================================================ Title -->
 <section class="title-slide">
-  <p class="kicker" style="margin-top: 30px !important;">Applied math notes · Lecture 2</p>
+  <p class="kicker" style="margin-top: 30px !important;">Applied math notes · Chapter 2</p>
   <h1>The finite element method</h1>
   <p class="subtitle">Local basis functions, sparse matrices and the conjugate gradient method</p>
   <div class="fig" style="margin-top: 40px;"><svg viewBox="0 0 1180 330" role="img" aria-label="Triangulated plane with the basis function of one node, a pyramid of height 1 over the triangles around the node">
@@ -631,7 +631,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 <text x="543.0" y="252.0" font-size="18" fill="#52514e">node <tspan font-style="italic">i</tspan></text>
 </svg></div>
   <aside class="notes">
-    Lecture 2: the finite element method is the Galerkin method of lecture 1 with local basis functions.
+    Chapter 2: the finite element method is the Galerkin method of chapter 1 with local basis functions.
     The picture: a triangulation and the basis function h_i of one node, a pyramid of height 1 over the triangles
     around the node and zero everywhere else.
   </aside>
@@ -671,7 +671,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 <rect x="463.0" y="135.0" width="23" height="23" fill="#1d2433" rx="2"/>
 <text x="434.0" y="190.0" font-size="20" fill="#52514e" text-anchor="middle"><tspan font-style="italic">K</tspan></text>
 </svg></div>
-      <p class="small">nonzero on the whole domain, e.g. the cubic Hermite polynomials of lecture 1.
+      <p class="small">nonzero on the whole domain, e.g. the cubic Hermite polynomials of chapter 1.
         Every $K_{ji} \neq 0$: $K$ is <strong>dense</strong>.</p>
     </div>
     <div class="card key fragment">
@@ -716,7 +716,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   </div>
   <p class="fragment" style="margin-top: 0.6em;">The <strong>finite element method</strong> (FEM) is the Galerkin method with local basis functions.</p>
   <aside class="notes">
-    Global basis functions are nonzero on the whole domain, like the cubic Hermite polynomials of exercise 2 of lecture 1:
+    Global basis functions are nonzero on the whole domain, like the cubic Hermite polynomials of exercise 2 of chapter 1:
     every entry K_ji is nonzero, K is dense. Local basis functions are nonzero only on a small part of the domain;
     a(h_i, h_j) = 0 if the supports do not overlap, so K is sparse. Highlighted in blue: one basis function and the row and
     column of K that belong to it.
@@ -1794,8 +1794,8 @@ solve(inner(grad(u), grad(v))*dx == Constant(1.0)*v*dx,
       constant: <code>{'linear_solver': 'cg', 'preconditioner': 'amg'}</code>.</div></li>
   </ol>
   <aside class="notes">
-    The four steps of the lecture. FEniCS does steps 1 to 3 in assemble or solve; step 4 is chosen with the solver
-    parameters. The exercises run CG by hand and set up the boundary conditions of an elastic dam.
+    The four steps of the chapter. FEniCS does steps 1 to 3 in assemble or solve; step 4 is chosen with the solver
+    parameters. The exercise runs CG by hand and compares preconditioners.
   </aside>
 </section>
 
@@ -1811,67 +1811,6 @@ solve(inner(grad(u), grad(v))*dx == Constant(1.0)*v*dx,
     <li>Repeat example 5 with the preconditioners <code>'jacobi'</code> and <code>'ilu'</code>. How do the iterations grow with $N$?
       Why does Jacobi not change anything here? (Look at the diagonal of $K$ in example 3.)</li>
   </ol>
-</section>
-
-<!-- ============================================================ Exercise 2 -->
-<section>
-  <p class="kicker">Exercise 2</p>
-  <h2>Linear elasticity: a dam</h2>
-  <div class="cols" style="grid-template-columns: 1.5fr 1fr; gap: 30px;">
-    <div>
-      <p class="small" style="margin: 0;">Find $u$ such that, for all $v$,</p>
-      <div class="mid">
-      $$\int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx + \int_{\partial\Omega} T \cdot v \; ds ,$$
-      $$\varepsilon(u) = \tfrac12 \left(\nabla u + \nabla u^T\right), \qquad \sigma(u) = \lambda\, (\operatorname{tr}\varepsilon)\, I + 2\mu\, \varepsilon .$$
-      </div>
-      <p class="note" style="margin-top: 0;">$T = \sigma n$: traction on the boundary; $f$: body force.</p>
-      <p class="small">Hydrostatic pressure of the water at the depth $x$: $\; g(x) = \rho\, g\, x$.</p>
-      <ol class="mid">
-        <li>Which of $\Gamma_W$, $\Gamma_R$, $\Gamma_C$, $\Gamma_A$ are Dirichlet, which Neumann boundaries?</li>
-        <li>Modify the variational form accordingly.</li>
-      </ol>
-    </div>
-    <div class="fig" style="margin-top: 10px;"><svg viewBox="0 0 520 470" role="img" aria-label="Cross section of a dam on a rock bed with the lake on the left; the upstream face, the base, the crest and the downstream face are named; the water pressure grows linearly with the depth x">
-<defs><pattern id="rock-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="12" stroke="#c3c2b7" stroke-width="2"/></pattern></defs>
-<rect x="10.0" y="390.0" width="500.0" height="40.0" fill="url(#rock-hatch)"/>
-<line x1="10.0" y1="390.0" x2="510.0" y2="390.0" stroke="#898781" stroke-width="1.5"/>
-<text x="510.0" y="458.0" font-size="18" fill="#52514e" text-anchor="end">rock bed</text>
-<rect x="10.0" y="110.0" width="220.0" height="280.0" fill="#e3eef5"/>
-<line x1="10.0" y1="110.0" x2="230.0" y2="110.0" stroke="#5b8fb3" stroke-width="2"/>
-<polygon points="82.0,94.0 98.0,94.0 90.0,106.0" fill="none" stroke="#5b8fb3" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="84.0" y1="117.0" x2="96.0" y2="117.0" stroke="#5b8fb3" stroke-width="1.4"/>
-<line x1="87.0" y1="122.0" x2="93.0" y2="122.0" stroke="#5b8fb3" stroke-width="1.4"/>
-<text x="70.0" y="205.0" font-size="19" fill="#52514e" text-anchor="middle">lake</text>
-<line x1="32.0" y1="110.0" x2="32.0" y2="369.0" stroke="#52514e" stroke-width="1.5"/>
-<polygon points="32.0,378.0 27.5,369.0 36.5,369.0" fill="#52514e" stroke="none"/>
-<text x="44.0" y="372.0" font-size="21" fill="#52514e"><tspan font-style="italic">x</tspan></text>
-<polygon points="230.0,110.0 230.0,390.0 110.0,390.0" fill="rgba(82,81,78,0.06)" stroke="none"/>
-<line x1="230.0" y1="110.0" x2="110.0" y2="390.0" stroke="#52514e" stroke-width="1.2"/>
-<line x1="206.0" y1="166.0" x2="219.0" y2="166.0" stroke="#52514e" stroke-width="1.5"/>
-<polygon points="228.0,166.0 219.0,170.5 219.0,161.5" fill="#52514e" stroke="none"/>
-<line x1="182.0" y1="222.0" x2="219.0" y2="222.0" stroke="#52514e" stroke-width="1.5"/>
-<polygon points="228.0,222.0 219.0,226.5 219.0,217.5" fill="#52514e" stroke="none"/>
-<line x1="158.0" y1="278.0" x2="219.0" y2="278.0" stroke="#52514e" stroke-width="1.5"/>
-<polygon points="228.0,278.0 219.0,282.5 219.0,273.5" fill="#52514e" stroke="none"/>
-<line x1="134.0" y1="334.0" x2="219.0" y2="334.0" stroke="#52514e" stroke-width="1.5"/>
-<polygon points="228.0,334.0 219.0,338.5 219.0,329.5" fill="#52514e" stroke="none"/>
-<text x="162.0" y="258.0" font-size="20" fill="#52514e" text-anchor="end"><tspan font-style="italic">g</tspan>(<tspan font-style="italic">x</tspan>)</text>
-<polygon points="230.0,390.0 230.0,110.0 275.0,110.0 450.0,390.0" fill="#ffffff" stroke="#1d2433" stroke-width="2.5" stroke-linejoin="round"/>
-<text x="318.0" y="312.0" font-size="26" fill="#1d2433" text-anchor="middle">Ω</text>
-<text x="318.0" y="336.0" font-size="16" fill="#52514e" text-anchor="middle">dam</text>
-<text x="240.0" y="252.0" font-size="21" fill="#1d2433">Γ<tspan font-size="15" dy="4.5" font-style="italic">W</tspan><tspan dy="-4.5"></tspan></text>
-<text x="252.5" y="98.0" font-size="21" fill="#1d2433" text-anchor="middle">Γ<tspan font-size="15" dy="4.5" font-style="italic">C</tspan><tspan dy="-4.5"></tspan></text>
-<text x="380.0" y="236.0" font-size="21" fill="#1d2433">Γ<tspan font-size="15" dy="4.5" font-style="italic">A</tspan><tspan dy="-4.5"></tspan></text>
-<text x="330.0" y="378.0" font-size="21" fill="#1d2433" text-anchor="middle">Γ<tspan font-size="15" dy="4.5" font-style="italic">R</tspan><tspan dy="-4.5"></tspan></text>
-</svg></div>
-  </div>
-  <aside class="notes">
-    Solution. Gamma_R: Dirichlet, the dam is fixed to the rock, u = 0, so v = 0 there. Gamma_W: Neumann, the water
-    pushes against the face, sigma n = -g(x) n (the pressure acts against the outward normal). Gamma_C and Gamma_A:
-    homogeneous Neumann, sigma n = 0, no boundary term. Find u with u = 0 on Gamma_R such that
-    int sigma(u) : epsilon(v) dx = int f . v dx - int_Gamma_W g(x) n . v ds for all v with v = 0 on Gamma_R;
-    f is the own weight of the dam.
-  </aside>
 </section>
 
 </div>
