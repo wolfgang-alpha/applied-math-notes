@@ -424,43 +424,26 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   </aside>
 </section>
 
-<!-- ============================================================ Directional derivative, Euler-Lagrange -->
+<!-- ============================================================ First variation, Euler-Lagrange -->
 <section>
   <p class="kicker">Theory</p>
-  <h2>Directional derivative and Euler–Lagrange equation</h2>
-  <div class="cols" style="grid-template-columns: 1.12fr 0.88fr;">
+  <h2>First variation and Euler–Lagrange equation</h2>
+  <div class="cols">
     <div class="card">
-      <h3>Directional derivative</h3>
-      <div class="mid">$$\delta\Pi(u; v) = \frac{d}{d\varepsilon}\, \Pi(u + \varepsilon v)\,\Big|_{\varepsilon = 0} = a(u, v) - L(v)$$</div>
-      <div class="fig" style="max-width: 430px; margin: 0 auto;"><svg viewBox="0 0 500 232" role="img" aria-label="Pi along the line u + eps v: a parabola in eps with horizontal tangent at eps = 0, since u is the minimizer; along w + eps v for another function w the slope at eps = 0 is not zero">
-<line x1="30" y1="196" x2="470" y2="196" stroke="#c3c2b7" stroke-width="1"/>
-<polyline points="30,-93.9 35.5,-85.8 41,-77.7 46.5,-69.8 52,-62.1 57.5,-54.5 63,-47 68.5,-39.6 74,-32.4 79.5,-25.4 85,-18.5 90.5,-11.7 96,-5.1 101.5,1.4 107,7.8 112.5,14 118,20.1 123.5,26.1 129,31.9 134.5,37.5 140,43 145.5,48.4 151,53.7 156.5,58.8 162,63.7 167.5,68.6 173,73.3 178.5,77.8 184,82.2 189.5,86.5 195,90.6 200.5,94.6 206,98.5 211.5,102.2 217,105.7 222.5,109.2 228,112.5 233.5,115.6 239,118.6 244.5,121.5 250,124.3 255.5,126.9 261,129.3 266.5,131.6 272,133.8 277.5,135.8 283,137.7 288.5,139.5 294,141.1 299.5,142.6 305,143.9 310.5,145.2 316,146.2 321.5,147.1 327,147.9 332.5,148.6 338,149.1 343.5,149.4 349,149.7 354.5,149.8 360,149.7 365.5,149.5 371,149.2 376.5,148.7 382,148.1 387.5,147.4 393,146.5 398.5,145.4 404,144.3 409.5,143 415,141.5 420.5,139.9 426,138.2 431.5,136.4 437,134.3 442.5,132.2 448,129.9 453.5,127.5 459,124.9 464.5,122.2 470,119.4" fill="none" stroke="#898781" stroke-width="2" stroke-dasharray="7 5"/>
-<polyline points="30,68.2 35.5,73.7 41,79 46.5,84.3 52,89.4 57.5,94.3 63,99.1 68.5,103.8 74,108.3 79.5,112.7 85,117 90.5,121.1 96,125 101.5,128.9 107,132.6 112.5,136.1 118,139.5 123.5,142.8 129,145.9 134.5,148.9 140,151.8 145.5,154.5 151,157.1 156.5,159.5 162,161.8 167.5,164 173,166 178.5,167.9 184,169.6 189.5,171.2 195,172.7 200.5,174 206,175.2 211.5,176.3 217,177.2 222.5,177.9 228,178.6 233.5,179.1 239,179.4 244.5,179.6 250,179.7 255.5,179.6 261,179.4 266.5,179.1 272,178.6 277.5,177.9 283,177.2 288.5,176.3 294,175.2 299.5,174 305,172.7 310.5,171.2 316,169.6 321.5,167.9 327,166 332.5,164 338,161.8 343.5,159.5 349,157.1 354.5,154.5 360,151.8 365.5,148.9 371,145.9 376.5,142.8 382,139.5 387.5,136.1 393,132.6 398.5,128.9 404,125 409.5,121.1 415,117 420.5,112.7 426,108.3 431.5,103.8 437,99.1 442.5,94.3 448,89.4 453.5,84.3 459,79 464.5,73.7 470,68.2" fill="none" stroke="#1d2433" stroke-width="3" stroke-linecap="round"/>
-<line x1="177.3" y1="89" x2="322.7" y2="159.5" stroke="#898781" stroke-width="2"/>
-<circle cx="250" cy="124.3" r="5" fill="#898781" stroke="#fcfcfb" stroke-width="2"/>
-<line x1="177.3" y1="179.7" x2="322.7" y2="179.7" stroke="#2a78d6" stroke-width="2.5"/>
-<circle cx="250" cy="179.7" r="6" fill="#1d2433" stroke="#fcfcfb" stroke-width="2"/>
-<line x1="250" y1="191" x2="250" y2="201" stroke="#52514e" stroke-width="1.2"/>
-<text x="250" y="222" font-size="21" fill="#52514e" text-anchor="middle">0</text>
-<text x="470" y="222" font-size="22" fill="#52514e" text-anchor="end"><tspan font-style="italic">ε</tspan></text>
-<text x="30" y="60" font-size="22" fill="#1d2433" font-weight="600">Π(<tspan font-style="italic">u</tspan> + <tspan font-style="italic">ε v</tspan>)</text>
-<text x="470" y="43.7" font-size="22" fill="#898781" text-anchor="end">Π(<tspan font-style="italic">w</tspan> + <tspan font-style="italic">ε v</tspan>)</text>
-</svg></div>
-      <p class="small" style="margin-bottom: 0;">$\delta\Pi(u; v) = 0$ for all $v$: the variational formulation, with the test function as the
-        direction.</p>
+      <h3>First variation</h3>
+      $$\delta\Pi(u; v) := \frac{d}{d\xi}\, \Pi(u + \xi v)\,\Big|_{\xi = 0} = 0$$
     </div>
     <div class="card fragment">
       <h3>Euler–Lagrange equation</h3>
       <p class="small" style="margin-bottom: 0;">For $\Pi(u) = \int_\Omega \mathcal{L}(x, u, \nabla u)\; dx$:</p>
       $$\frac{\partial \mathcal{L}}{\partial u} - \nabla \cdot \frac{\partial \mathcal{L}}{\partial \nabla u} = 0$$
-      <p class="small fragment">Heat conduction: $\mathcal{L} = \tfrac12\, |\nabla u|^2 - f\, u$ gives $-\nabla \cdot \nabla u = f$.</p>
     </div>
   </div>
   <aside class="notes">
-    The directional derivative: restrict Pi to the line u + eps v and differentiate with respect to eps. At the
-    minimizer the slope is zero in every admissible direction v (v = 0 on the Dirichlet boundary): black curve. At any
-    other function w there is a direction with nonzero slope: grey. For quadratic Pi,
-    Pi(u + eps v) = Pi(u) + eps delta Pi(u; v) + 1/2 eps^2 a(v, v), and delta Pi = a(u, v) - L(v) = 0 for all v is the
+    The first variation, the directional derivative of Pi: restrict Pi to the line u + xi v and differentiate with
+    respect to xi. At the
+    minimizer the slope is zero in every admissible direction v (v = 0 on the Dirichlet boundary). For quadratic Pi,
+    Pi(u + xi v) = Pi(u) + xi delta Pi(u; v) + 1/2 xi^2 a(v, v), and delta Pi = a(u, v) - L(v) = 0 for all v is the
     variational formulation of chapter 1.
     The Euler-Lagrange equation is the condition on the energy density (calligraphic L, not the linear form L(v)).
     Heat conduction: dL/du = -f and dL/d grad u = grad u. In 1D with second derivatives the equation gets the
@@ -496,7 +479,8 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
     </div>
     <div class="mid"><svg viewBox="0 0 190 90" aria-hidden="true">
       <text x="95" y="46" font-size="19" fill="#52514e" text-anchor="middle">integrate by parts</text>
-      <line x1="12" y1="66" x2="168" y2="66" stroke="#52514e" stroke-width="2"/>
+      <line x1="23" y1="66" x2="167" y2="66" stroke="#52514e" stroke-width="2"/>
+      <path d="M10,66 L23,60 L23,72 Z" fill="#52514e"/>
       <path d="M180,66 L167,60 L167,72 Z" fill="#52514e"/>
     </svg></div>
     <div class="node strong">
@@ -519,8 +503,9 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <aside class="notes">
     The functional is the starting point; both forms follow from it. Left: the directional derivative, delta Pi(u; v) = 0
     for all v (v = 0 on the Dirichlet boundary), gives the variational formulation; for quadratic Pi this is
-    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE. Between them: integration by parts, as in chapter 1,
-    now read from left to right.
+    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE. Between them: integration by parts, which works in both
+    directions: multiplied by v and integrated by parts, the strong form gives the weak form (chapter 1); integrated by
+    parts back, the weak form gives the strong form.
     The orange terms: the work of the boundary load t is part of the functional. It goes into the weak form as the
     boundary integral of L(v). Integrating by parts leaves the boundary integral of (dL/d grad u . n - t) v, and since v
     is arbitrary on Gamma, the bracket vanishes: the natural boundary condition. Nothing has to be imposed by hand. A free
