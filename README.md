@@ -28,7 +28,7 @@ bundles reveal.js, MathJax and the fonts with their licenses).
 ## Solutions
 
 Solutions to the exercises on the slides: [chapter 1](solutions/chapter01.pdf), [chapter 2](solutions/chapter02.pdf),
-[chapter 3](solutions/chapter03.pdf) (exercise 2).
+[chapter 3](solutions/chapter03.pdf) (exercise 4).
 The LaTeX sources are in [solutions](solutions); `solutions/batch.sh` compiles them (needs `pdflatex` and `latexmk`).
 The FEniCS scripts there produce the numbers in the solutions.
 

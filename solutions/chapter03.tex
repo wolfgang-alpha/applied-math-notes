@@ -3,17 +3,26 @@
 \begin{document}
 \sheet{3}{Minimum potential energy}
 
-%% ====================================================================== Exercise 2
-\exercise{Exercise 2: Linear elasticity, a dam}
+%% ====================================================================== Exercise 4
+\exercise{Exercise 4: Stress, the force on a surface, and a dam}
 
-Linear elasticity has $O(A) = 2$, $s = 1$, $m = 0$: the displacement ($c = 0$) is an essential, the traction
+\task{1.} The force per unit area on a surface with the unit normal $n$ is $\sigma n$.
+\begin{itemize}
+  \item[a)] For $\sigma = \begin{pmatrix} s & 0 \\ 0 & 0 \end{pmatrix}$: $n = (1, 0)$ gives $\sigma n = (s, 0)$, the cross
+    section is pulled along its normal with $s$. $n = (0, 1)$ gives $\sigma n = 0$, the lateral faces are free.
+    $n = (1, 1)/\sqrt2$ gives $\sigma n = (s, 0)/\sqrt2$, which is not parallel to $n$: the part along $n$ is
+    $\sigma n \cdot n = s/2$, the part within the surface has the size $s/2$, a shear force.
+  \item[b)] $\sigma n = -p\, n$ for every $n$: the water pushes against every surface along its normal, with the same
+    strength in all directions.
+\end{itemize}
+
+\task{2.} Linear elasticity has $O(A) = 2$, $s = 1$, $m = 0$: the displacement ($c = 0$) is an essential, the traction
 $\sigma n$ (first derivatives, $c = 1$) a natural boundary condition.
-
-\task{1.}
 \begin{itemize}
   \item $\Gamma_R$ (rock bed): \textcolor{dir}{\textbf{Dirichlet}}, the dam is fixed to the rock: $u = 0$.
   \item $\Gamma_W$ (water side): \textcolor{neu}{\textbf{Neumann}}, the water pressure acts against the outward normal
-    and pushes the dam downstream: $\sigma n = T = -g(x)\, n$, with $n = (-1, 0)$ on the vertical face.
+    and pushes the dam downstream (item 1\,b with $p = g(x)$): $\sigma n = T = -g(x)\, n$, with $n = (-1, 0)$ on the
+    vertical face.
   \item $\Gamma_C$ (crest) and $\Gamma_A$ (air side): \textcolor{neu}{\textbf{homogeneous Neumann}}, free surfaces:
     $\sigma n = 0$.
 \end{itemize}
@@ -44,7 +53,7 @@ surface at $y = H$, $x = H - y$.
 \end{tikzpicture}
 \end{center}
 
-\task{2.} The test functions vanish where $u$ is prescribed, $v = 0$ on $\Gamma_R$; there the traction (the unknown
+\task{3.} The test functions vanish where $u$ is prescribed, $v = 0$ on $\Gamma_R$; there the traction (the unknown
 reaction force of the rock) drops out of the boundary integral. On $\Gamma_W$ the traction is $T = -g(x)\, n$, on
 $\Gamma_C$ and $\Gamma_A$ it is zero:
 \[
