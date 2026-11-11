@@ -32,6 +32,11 @@ Solutions to the exercises on the slides: [chapter 1](solutions/chapter01.pdf), 
 The LaTeX sources are in [solutions](solutions); `solutions/batch.sh` compiles them (needs `pdflatex` and `latexmk`).
 The FEniCS scripts there produce the numbers in the solutions.
 
+## Examples
+
+Larger examples are in [examples](examples): [a suspension bridge](examples/bridge) in 3D under its own weight,
+with a film of the total potential energy falling to its minimum (to chapter 3).
+
 ## Running the notebooks with Docker
 
 You need [Docker](https://docs.docker.com/get-docker/). The image
