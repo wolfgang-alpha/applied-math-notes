@@ -468,7 +468,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
       <line x1="840" y1="2" x2="980" y2="54" stroke="#52514e" stroke-width="2"/>
       <path d="M988,57 L975,58 L982,47 Z" fill="#52514e"/>
       <text x="350" y="30" font-size="20" fill="#52514e" text-anchor="end">directional derivative</text>
-      <text x="930" y="30" font-size="20" fill="#52514e">Euler–Lagrange equation</text>
+      <text x="930" y="30" font-size="20" fill="#52514e">Euler–Lagrange equation (in Ω)</text>
     </svg></div>
     <div class="node weak">
       <div class="label">Variational formulation</div>
@@ -488,6 +488,7 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
       <div class="eqrow">$\displaystyle \frac{\partial \mathcal{L}}{\partial u} - \nabla \cdot \frac{\partial \mathcal{L}}{\partial \nabla u} = 0
         \;\text{ in } \Omega$</div>
       <div class="eqrow neu-term">$\displaystyle \frac{\partial \mathcal{L}}{\partial \nabla u} \cdot n = t \;\text{ on } \Gamma$</div>
+      <p class="note neu-term" style="margin: 0;">on $\Gamma$: from integrating by parts</p>
     </div>
   </div>
   <div class="cols" style="margin-top: 22px;">
@@ -503,7 +504,8 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
   <aside class="notes">
     The functional is the starting point; both forms follow from it. Left: the directional derivative, delta Pi(u; v) = 0
     for all v (v = 0 on the Dirichlet boundary), gives the variational formulation; for quadratic Pi this is
-    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE. Between them: integration by parts, which works in both
+    a(u, v) = L(v). Right: the Euler-Lagrange equation gives the PDE in Omega only; the condition on Gamma comes from the boundary
+    term of the integration by parts: first take v = 0 on Gamma (Euler-Lagrange equation), then arbitrary v on Gamma. Between them: integration by parts, which works in both
     directions: multiplied by v and integrated by parts, the strong form gives the weak form (chapter 1); integrated by
     parts back, the weak form gives the strong form.
     The orange terms: the work of the boundary load t is part of the functional. It goes into the weak form as the
