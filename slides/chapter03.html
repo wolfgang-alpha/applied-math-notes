@@ -190,6 +190,9 @@ html.print-pdf .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0
 .rel .mid text { font-family: var(--r-main-font); }
 .eqrow.nw { white-space: nowrap; }
 .reveal .tbl.nw td, .reveal .tbl.nw th { white-space: nowrap; }
+.print-only { display: none; }
+html.print-pdf .print-only { display: block; }
+html.print-pdf .screen-only { display: none !important; }
 </style>
 </head>
 <body>
@@ -1260,34 +1263,67 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
   </aside>
 </section>
 
-<!-- ============================================================ Recap -->
+<!-- ============================================================ Bridge: model -->
 <section>
-  <p class="kicker">Recap</p>
-  <h2>From the spring to the elastic body</h2>
-  <p class="small" style="margin: 0 0 0.5em;">Four times the same structure: in equilibrium $\Pi = \Psi - W$ is minimal.</p>
-  <table class="matrix" style="font-size: 0.74em;">
-    <tr><th></th><th>Spring</th><th>Bar</th><th>Elastic body</th><th>Heat conduction (chapter 1)</th></tr>
-    <tr><td class="regime">Unknown</td><td>$u$</td><td>$u(x)$</td><td>$u(x)$, a vector</td><td>temperature $u(x)$</td></tr>
-    <tr><td class="regime">Strain</td><td>$u$ itself</td><td>$\varepsilon = u'$</td>
-      <td>$\varepsilon = \tfrac12 \left(\nabla u + \nabla u^T\right)$</td><td>gradient $\nabla u$</td></tr>
-    <tr class="this"><td class="regime">Hooke's law</td><td>force $k\, u$</td><td>stress $\sigma = E\, \varepsilon$</td>
-      <td>stress $\sigma = \kappa\, (\operatorname{tr}\varepsilon)\, I + 2G \operatorname{dev}\varepsilon$</td>
-      <td>heat flux $q = -\nabla u$ (Fourier)</td></tr>
-    <tr><td class="regime">Stored energy $\Psi$</td><td>$\tfrac12\, k\, u^2$</td><td>$\int \tfrac12\, E A\, \varepsilon^2 \; dx$</td>
-      <td>$\int \psi(\varepsilon) \; dx$</td><td>$\int \tfrac12\, |\nabla u|^2 \; dx$</td></tr>
-    <tr><td class="regime">Work of the loads $W$</td><td>$m g\, u$</td><td>$F\, u(L)$</td>
-      <td>$\int f \cdot u \; dx + \int_\Gamma T \cdot u \; ds$</td><td>$\int f\, u \; dx - \int_\Gamma g\, u \; ds$</td></tr>
-    <tr><td class="regime">Equilibrium</td><td>$k\, u = m g$</td><td>exercise 3</td>
-      <td>$-\nabla \cdot \sigma = f$, $\;\sigma n = T$</td><td>$-\nabla \cdot \nabla u = f$, $\;q \cdot n = g$</td></tr>
-  </table>
+  <p class="kicker">Example</p>
+  <h2>A suspension bridge under its own weight</h2>
+  <div class="cols">
+    <div class="card">
+      <h3>Dimensions</h3>
+      <ul class="small" style="margin: 0.2em 0 0 1.1em;">
+        <li>main span $12$, two side spans $4$: length $21$</li>
+        <li>deck: width $2$, thickness $0.3$</li>
+        <li>towers $3.35$ above the deck, piers $2.2$ below it</li>
+        <li>two cables, sag $2.7$ in the main span, $2 \times 23$ hangers</li>
+      </ul>
+      <h3 style="margin-top: 0.7em;">Material and load</h3>
+      <p class="small" style="margin: 0;">$E = 1000$, $\;\nu = 0.3$, own weight $f = (0, 0, -\rho g)$ with $\rho g = 0.3$,
+        as in the 2D examples</p>
+    </div>
+    <div class="card key">
+      <h3>Variational form</h3>
+      <p class="small" style="margin: 0;">Fixed ($u = 0$) at the feet of the piers and at the abutments: $\Gamma_D$.</p>
+      $$\Pi(u) = \int_\Omega \psi(\varepsilon(u)) \; dx - \int_\Omega f \cdot u \; dx$$
+      <p class="small" style="margin: 0;">$\delta\Pi(u; v) = 0$: find $u$ with $u = 0$ on $\Gamma_D$ such that</p>
+      $$\int_\Omega \sigma(u) : \varepsilon(v) \; dx = \int_\Omega f \cdot v \; dx$$
+      <p class="note" style="margin: 0;">for all $v$ with $v = 0$ on $\Gamma_D$; all other surfaces are free, $\sigma n = 0$</p>
+    </div>
+  </div>
   <aside class="notes">
-    Recap for the start of a session. Every column has the same ingredients: an unknown, a strain that measures how much
-    the thing is deformed, a material law that turns the strain into a force or a stress, the stored energy and the work
-    of the loads. The force or stress is the derivative of the energy with respect to the strain: k u of 1/2 k u^2,
-    E eps of 1/2 E eps^2, sigma of psi. Minimizing Pi = Psi - W gives the equilibrium in the last row.
-    The bar (cross section A, pulled by the force F at its end) is the spring per unit length and per unit area; its
-    last row is exercise 3. Heat conduction (chapter 1 and exercise 1) is the same mathematics: the temperature gradient
-    plays the role of the strain, the heat flux that of the stress, Fourier's law that of Hooke's law.
+    A bridge in the style of the Golden Gate Bridge, in 3D, solved exactly as the 2D examples: the same psi, the same
+    material, Pi written down in FEniCS, derivative gives the variational form. No traction anywhere: all free surfaces
+    get the natural condition sigma n = 0. The scripts are in examples/bridge of the repository; the simulation takes
+    about 20 seconds.
+  </aside>
+</section>
+
+<!-- ============================================================ Bridge: mesh -->
+<section>
+  <p class="kicker">Example</p>
+  <h2>The mesh</h2>
+  <img src="../examples/bridge/bridge_mesh.png" alt="The surface of the tetrahedral mesh of the bridge"
+       style="display: block; width: 100%; max-height: 560px; object-fit: contain; margin: 0;">
+  <p class="note" style="margin-top: 0.2em;">16&#8239;426 nodes, 54&#8239;830 tetrahedra, 49&#8239;278 unknowns (P1). Built from boxes
+    and two cables with Gmsh.</p>
+  <aside class="notes">
+    The geometry is put together from simple solids (deck, towers, struts, piers, abutments, cables, hangers) and fused
+    into one body; Gmsh meshes it with tetrahedra, finer at the cables and hangers.
+  </aside>
+</section>
+
+<!-- ============================================================ Bridge: film -->
+<section>
+  <p class="kicker">Example</p>
+  <h2>On the way to the minimum of $\Pi$</h2>
+  <img class="screen-only" src="../examples/bridge/bridge_minimum_energy.gif" alt="The bridge moves from the undeformed state to equilibrium; a graph shows the total potential energy falling to its minimum"
+       style="display: block; width: 100%; max-height: 590px; object-fit: contain; margin: 0;">
+  <img class="print-only" src="../examples/bridge/bridge_energy_density.png" alt="The bridge in equilibrium, coloured by the strain energy density"
+       style="width: 100%; max-height: 590px; object-fit: contain; margin: 0;">
+  <aside class="notes">
+    The displacement xi u for xi from 0 (undeformed) to 1 (equilibrium), under the full weight, at true scale. The
+    graph is Pi(xi u) = Psi(u) (xi^2 - 2 xi), the parabola of the mass on a spring, with its minimum -Psi(u) = -0.354
+    in equilibrium; beyond it the energy would rise again. The colour is the strain energy density: the cables and
+    hangers carry the deck. The deck sinks by 0.51 at midspan.
   </aside>
 </section>
 
@@ -1431,7 +1467,6 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
     Delta L = u(L) = F L/(E A): eps = Delta L/L and E = (F/A)/(Delta L/L), the definition of Young's modulus in the
     tension test. The bar is a spring with k = E A/L: Pi = 1/2 k Delta L^2 - F Delta L.
     Also: sigma is the derivative of the energy density psi = 1/2 E eps^2 with respect to eps, as for the elastic body.
-    This fills the bar column of the recap table.
   </aside>
 </section>
 
