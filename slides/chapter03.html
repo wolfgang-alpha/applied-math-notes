@@ -1349,7 +1349,7 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
   <p class="kicker">Exercise 2</p>
   <h2>Two springs</h2>
   <div class="cols" style="grid-template-columns: 1fr 1.1fr; align-items: center;">
-    <div class="fig"><svg viewBox="0 0 560 240" role="img" aria-label="Two springs with the stiffnesses k1 and k2 in a row, fixed to a wall. Above, in grey, without load. Below, with the force F pulling at the end: node 1 between the springs has moved by u1 and node 2 at the end by u2, each measured from its position without load">
+    <div class="fig"><svg viewBox="0 0 560 240" role="img" aria-label="Two springs with the stiffnesses k1 and k2 in a row, fixed to a wall. Above, in grey, without load. Below, with the force P pulling at the end: node 1 between the springs has moved by u1 and node 2 at the end by u2, each measured from its position without load">
 <line x1="64" y1="24" x2="64" y2="212" stroke="#2a78d6" stroke-width="3.5"/>
 <line x1="64" y1="28" x2="50" y2="42" stroke="#52514e" stroke-width="1.5"/>
 <line x1="64" y1="42" x2="50" y2="56" stroke="#52514e" stroke-width="1.5"/>
@@ -1375,7 +1375,7 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
 <circle cx="248" cy="178" r="18" fill="#ffffff" stroke="#1d2433" stroke-width="2"/><text x="248" y="185" font-size="19" fill="#1d2433" text-anchor="middle">1</text>
 <circle cx="450" cy="178" r="18" fill="#ffffff" stroke="#1d2433" stroke-width="2"/><text x="450" y="185" font-size="19" fill="#1d2433" text-anchor="middle">2</text>
 <line x1="470" y1="178" x2="535" y2="178" stroke="#eb6834" stroke-width="2.8"/><path d="M546,178 L535,183.5 L535,172.5 Z" fill="#eb6834"/>
-<text x="520" y="164" font-size="22" fill="#1d2433" text-anchor="middle"><tspan font-style="italic">F</tspan></text>
+<text x="520" y="164" font-size="22" fill="#1d2433" text-anchor="middle"><tspan font-style="italic">P</tspan></text>
 <text x="147" y="224" font-size="22" fill="#1d2433" text-anchor="middle"><tspan font-style="italic">k</tspan><tspan font-size="14" dy="5">1</tspan><tspan dy="-5"> </tspan></text>
 <text x="349" y="224" font-size="22" fill="#1d2433" text-anchor="middle"><tspan font-style="italic">k</tspan><tspan font-size="14" dy="5">2</tspan><tspan dy="-5"> </tspan></text>
 <line x1="214" y1="78" x2="214" y2="142" stroke="#52514e" stroke-width="1.3" stroke-dasharray="4 4"/>
@@ -1388,9 +1388,9 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
 <text x="416" y="122" font-size="21" fill="#52514e" text-anchor="middle"><tspan font-style="italic">u</tspan><tspan font-size="14" dy="5">2</tspan><tspan dy="-5"> </tspan></text>
 </svg></div>
     <div>
-      <p class="small" style="margin: 0;">Two springs in a row, fixed to a wall and pulled by the force $F$. The nodes move by
+      <p class="small" style="margin: 0;">Two springs in a row, fixed to a wall and pulled by the force $P$. The nodes move by
         $u_1$ and $u_2$ from their positions without load:</p>
-      <div class="mid">$$\Pi(u_1, u_2) = \tfrac12\, k_1 u_1^2 + \tfrac12\, k_2\, (u_2 - u_1)^2 - F\, u_2$$</div>
+      <div class="mid">$$\Pi(u_1, u_2) = \tfrac12\, k_1 u_1^2 + \tfrac12\, k_2\, (u_2 - u_1)^2 - P\, u_2$$</div>
     </div>
   </div>
   <ol class="mid">
@@ -1401,15 +1401,14 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
     <li>Solve for $u_2$ in the case $k_1 = k_2 = k$.</li>
   </ol>
   <aside class="notes">
-    Solution. 1: dPi/du_1 = k_1 u_1 - k_2 (u_2 - u_1) = 0 and dPi/du_2 = k_2 (u_2 - u_1) - F = 0. As a system: the
-    matrix K = [[k_1 + k_2, -k_2], [-k_2, k_2]] times the vector U = (u_1, u_2) equals the load vector (0, F). The
-    underbars tell the load vector from the force F.
+    Solution. 1: dPi/du_1 = k_1 u_1 - k_2 (u_2 - u_1) = 0 and dPi/du_2 = k_2 (u_2 - u_1) - P = 0. As a system: the
+    matrix K = [[k_1 + k_2, -k_2], [-k_2, k_2]] times the vector U = (u_1, u_2) equals the load vector F = (0, P).
     2: node 1: spring 1 pulls it back with k_1 u_1, spring 2 pulls it forward with k_2 (u_2 - u_1). Node 2: spring 2
-    pulls it back with k_2 (u_2 - u_1), the force F pulls it forward.
+    pulls it back with k_2 (u_2 - u_1), the force P pulls it forward.
     3: the second derivatives of Pi form the matrix K. It is symmetric with det K = k_1 k_2 > 0 and a positive
     diagonal, hence positive definite. Or directly: the stored energy is positive unless u_1 = 0 and u_2 = u_1.
-    4: u_2 = 2F/k (and u_1 = F/k): the two springs together stretch twice as much as one, like a single spring of
-    stiffness k/2. At the minimum Pi = -F^2/k = -1/2 F u_2, minus the stored energy, as for the single spring.
+    4: u_2 = 2P/k (and u_1 = P/k): the two springs together stretch twice as much as one, like a single spring of
+    stiffness k/2. At the minimum Pi = -P^2/k = -1/2 P u_2, minus the stored energy, as for the single spring.
     The figure: u_1 and u_2 are displacements. Both are measured in the frame of the wall, each from the position of
     its node without load (grey), not from the wall; otherwise the lengths of the unloaded springs would enter Pi.
     Remarks: only the difference of the displacements stretches spring 2 and stores energy. K is the stiffness matrix
@@ -1446,26 +1445,28 @@ print(assemble(Pi), assemble(psi(epsilon(u))*dx))
 </svg></div>
     <div>
       <p class="small" style="margin: 0;">A bar of length $L$ and cross section $A$, fixed at $x = 0$ and pulled by the force $F$
-        at $x = L$. With the displacement $u(x)$: strain $\varepsilon = u'$, stress $\sigma = E\, \varepsilon$ (Hooke's law).</p>
+        at $x = L$. With the displacement $u(x)$: strain $\varepsilon = u'$, stress $\sigma = E\, \varepsilon$ (Hooke's law),
+        and the force spreads over the cross section: $\sigma = F / A$.</p>
       $$\Pi(u) = \int_0^L \tfrac12\, E A\, (u')^2 \, dx - F\, u(L)$$
     </div>
   </div>
   <ol class="mid">
-    <li>Compute $\delta\Pi(u; v)$.</li>
     <li>Apply the Euler–Lagrange equation to $\Pi$.</li>
-    <li>Integrate $\delta\Pi$ by parts. Which condition holds at $x = L$, and what does it say about the stress?</li>
     <li>Solve for $u$ and compute $\varepsilon$ and $\sigma$. Compare with $E$ in the tension test. Which spring stiffness $k$
       has the bar?</li>
+    <li>Compute $\delta\Pi(u; v)$.</li>
+    <li>Integrate $\delta\Pi$ by parts. Which condition holds at $x = L$, and what does it say about the stress?</li>
   </ol>
   <aside class="notes">
-    Solution. 1: delta Pi(u; v) = int E A u' v' dx - F v(L) = 0 for all v with v(0) = 0.
-    2: the energy density 1/2 E A (u')^2 does not depend on u itself, so the Euler-Lagrange equation is
+    Solution. 1: the energy density 1/2 E A (u')^2 does not depend on u itself, so the Euler-Lagrange equation is
     -(E A u')' = 0 in (0, L).
-    3: integrating by parts gives -int (E A u')' v dx + (E A u'(L) - F) v(L) = 0, so E A u'(L) = F at the free end:
-    stress times cross section equals the applied force, sigma(L) A = F.
-    4: u = F x/(E A); the strain eps = F/(E A) and the stress sigma = F/A are constant. With the elongation
-    Delta L = u(L) = F L/(E A): eps = Delta L/L and E = (F/A)/(Delta L/L), the definition of Young's modulus in the
-    tension test. The bar is a spring with k = E A/L: Pi = 1/2 k Delta L^2 - F Delta L.
+    2: Hooke's law and sigma = F/A give E u' = F/A, and with u(0) = 0: u = F x/(E A), linear as item 1 says; the strain eps = F/(E A) and the stress sigma = F/A are constant. With the
+    elongation Delta L = u(L) = F L/(E A): eps = Delta L/L and E = (F/A)/(Delta L/L), the definition of Young's modulus
+    in the tension test. The bar is a spring with k = E A/L: Pi = 1/2 k Delta L^2 - F Delta L.
+    3: delta Pi(u; v) = int E A u' v' dx - F v(L) = 0 for all v with v(0) = 0.
+    4: integrating by parts gives -int (E A u')' v dx + (E A u'(L) - F) v(L) = 0, so E A u'(L) = F at the free end:
+    stress times cross section equals the applied force, sigma(L) A = F. The functional delivers the sigma = F/A that
+    item 2 took as given.
     Also: sigma is the derivative of the energy density psi = 1/2 E eps^2 with respect to eps, as for the elastic body.
   </aside>
 </section>
